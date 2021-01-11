@@ -4,12 +4,15 @@
   "main": "main.js",
   "license": "MIT",
   "dependencies": {
+    "dotenv-webpack": "^6.0.0",
     "eslint-loader": "^4.0.2",
     "html-webpack-plugin": "^4.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "skyway-js": "^4.2.0",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.5.0",

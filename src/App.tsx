@@ -2,6 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import counterSlice from './counter/slice';
 import { useCounterState } from './counter/selectors';
+// import Peer from 'skyway-js';
+// const peer = new Peer({key: 'あなたのAPIキー'});
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,6 +16,9 @@ const App: React.FC = () => {
   const onClickDecrement = () => {
     dispatch(counterSlice.actions.decrementCounter(1));
   };
+
+  console.log('process.env.API_KEY');
+  console.log(process.env.API_KEY);
 
   return (
     <>

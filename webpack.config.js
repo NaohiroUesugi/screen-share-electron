@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   // Electronのレンダラプロセスで動作することを指定する
@@ -15,7 +16,7 @@ module.exports = {
   devtool: 'source-map',
   // 出力先設定 __dirname は node でのカレントディレクトリのパスが格納される変数
   output: {
-    /*eslint no-undef: 0*/
+    /* eslint no-undef: 0 */
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
   },
@@ -50,6 +51,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv(),
     // Webpack plugin を利用する
     new HtmlWebpackPlugin({
       filename: 'index.html',
