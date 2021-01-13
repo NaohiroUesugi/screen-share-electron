@@ -6,7 +6,6 @@ import App from './App';
 
 ReactDOM.render(
   <Provider store={createStore()}>
-    <p>HELLO WORLD</p>
     <App />
   </Provider>,
   document.getElementById('root')
