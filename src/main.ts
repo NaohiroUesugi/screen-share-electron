@@ -6,9 +6,9 @@ const createWindow = (): void => {
     width: 1200,
     height: 600,
     webPreferences: {
-      nodeIntegration: false,
-      nodeIntegrationInWorker: false,
-      contextIsolation: true,
+      nodeIntegration: true,
+      // nodeIntegrationInWorker: false,
+      // contextIsolation: true,
     },
   });
 
