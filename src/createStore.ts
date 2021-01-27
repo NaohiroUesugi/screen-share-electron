@@ -1,13 +1,18 @@
 import { Store, combineReducers } from 'redux';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import counterSlice, { initialState as counterState } from './counter/slice';
+import {
+  logHistorySlice,
+  initialState as logHistoryState,
+} from './slice/log-history-slice';
+import { userSlice, initialState as userState } from './slice/user-slice';
 
 const rootReducer = combineReducers({
-  counter: counterSlice.reducer,
+  logHistory: logHistorySlice.reducer,
+  user: userSlice.reducer,
 });
 
 const preloadedState = () => {
-  return { counter: counterState };
+  return { logHistory: logHistoryState, user: userState };
 };
 
 export type StoreState = ReturnType<typeof preloadedState>;

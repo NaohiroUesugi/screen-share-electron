@@ -1,65 +1,57 @@
 import React from 'react';
 import styled from 'styled-components';
+import { colors } from './color';
+import { Size } from '../../types/common';
 
-const ButtonWapper = styled.div<{ size: Size }>`
+const ButtonWapper = styled.button<{ size: Size }>`
   user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: ${({ size }) => {
+  outline: none;
+  cursor: 'pointer'
+  display: inline-block;
+  max-width: 18rem;
+  text-align: left;
+  border: 0.2rem solid ${colors.main};
+  font-size: 1.5rem;
+  color: ${colors.main};
+  background-color: ${colors.white};
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 0.4rem;
+  transition: 0.4s;
+  padding: ${({ size }) => {
     switch (size) {
       case 'small':
-        return '5rem';
+        return '0.5rem 1rem';
       case 'medium':
-        return '10rem';
+        return '0.8rem 1.6rem';
       case 'large':
-        return '15rem';
+        return '1rem 2rem';
     }
   }};
-  height: ${({ size }) => {
-    switch (size) {
-      case 'small':
-        return '4rem';
-      case 'medium':
-        return '8rem';
-      case 'large':
-        return '12rem';
-    }
-  }};
-  background-color: #4d6492;
-  color: #ebe2d9;
-  font-size: 2rem;
-  font-weight: 600;
-  border-radius: 5%;
-  cursor: pointer;
-
-  & > p {
-    margin: 0;
-  }
 
   &: hover {
-    opacity: 0.8;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: ${colors.main};
+    border-color: ${colors.main};
+    color: ${colors.white};
   }
 `;
 
-type Size = 'small' | 'medium' | 'large';
-
 type ButtonProps = {
-  onClick: () => void;
+  onClick?: () => void;
   text: string;
   size?: Size;
+  disabled?: boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
   onClick,
   text,
   size = 'medium',
+  disabled,
 }) => {
   return (
-    <ButtonWapper onClick={onClick} size={size}>
-      <p>{text}</p>
+    <ButtonWapper onClick={onClick} size={size} disabled={disabled}>
+      {text}
     </ButtonWapper>
   );
 };

@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain, session, screen } from 'electron';
 // import path from 'path';
 
 const createWindow = (): void => {
@@ -7,7 +7,7 @@ const createWindow = (): void => {
     height: 600,
     webPreferences: {
       nodeIntegration: true,
-      // nodeIntegrationInWorker: false,
+      nodeIntegrationInWorker: false,
       // contextIsolation: true,
     },
   });
@@ -18,6 +18,21 @@ const createWindow = (): void => {
 };
 
 app.whenReady().then(createWindow);
+
+ipcMain.handle('get-windows-size', () => {
+  const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+  return { width, height };
+});
+
+app.on('ready', (_) => {
+  session.defaultSession.webRequest.onBeforeSendHeaders((details, callback) => {
+    details.requestHeaders['Origin'] = 'electron://localhost';
+    callback({
+      cancel: false,
+      requestHeaders: details.requestHeaders,
+    });
+  });
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
