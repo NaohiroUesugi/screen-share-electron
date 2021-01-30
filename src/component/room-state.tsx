@@ -6,10 +6,6 @@ import { logHistoryActions } from '../slice/log-history-slice';
 import { Screen } from '../model/screen';
 import axios from 'axios';
 
-const skywayKey = process.env.API_KEY;
-const peer = new Peer({ key: skywayKey });
-const apiUrl = 'https://screen-share-api.herokuapp.com/api/v1/user';
-
 export const RoomContext = createContext(null);
 
 type CanvasMousePosition = {
@@ -31,19 +27,20 @@ type SendRoomMessageType =
   | 'joinRoom';
 type SendRoomMessage = CurrentRoomState | CanvasMousePosition | joinRoom;
 
-export const RoomState: React.FC = ({ children }) => {
+export const RoomState: React.FC<{
+  children: React.ReactNode;
+  skywayKey: string;
+}> = ({ children, skywayKey }) => {
+  if (!skywayKey) {
+    return;
+  }
   const [canStreamingScreen, setCanStreamingScreen] = useState(false);
+  const apiUrl = 'https://screen-share-api.herokuapp.com/api/v1/user';
+  const peer = useMemo(() => new Peer({ key: skywayKey }), []);
 
   const dispatch = useDispatch();
   let menberRoom: SfuRoom | null = useMemo(() => null, []);
   let streamShareRoom: SfuRoom | null = useMemo(() => null, []);
-
-  const sendCurrentRoomState = () => {
-    sendMenberRoom({
-      type: 'CurrentRoomState',
-      canStreamingScreen: canStreamingScreen,
-    });
-  };
 
   const startStreaming = async () => {
     setCanStreamingScreen(false);
@@ -170,3 +167,5 @@ export const RoomState: React.FC = ({ children }) => {
     </RoomContext.Provider>
   );
 };
+
+// export const RoomState = React.memo(RoomStateCom);
