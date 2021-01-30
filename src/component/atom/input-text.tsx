@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import { Size } from '../../types/common';
+import { colors } from './color';
 
 type InputTextProps = {
   size?: Size;
@@ -29,8 +30,8 @@ export const InputText: React.FC<InputTextProps> = ({
 const InputTextStyle = styled.input.attrs({ type: 'text' })`
   padding: 0.5em;
   margin: 0.5em;
-  color: #4d6492;
-  border: 2px solid #4d6492;
+  color: ${colors.main};
+  border: 2px solid ${colors.main};
   border-radius: 3px;
   width: 100%;
 

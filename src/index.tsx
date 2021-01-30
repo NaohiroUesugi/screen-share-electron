@@ -7,7 +7,7 @@ import { RoomState } from './component/room-state';
 import axios from 'axios';
 const apiUrl = 'https://screen-share-api.herokuapp.com/api/v1/user';
 
-const IndexComponent = () => {
+const IndexComponent: React.FC = () => {
   const [skywayKey, setSkywayKey] = React.useState(null);
   React.useEffect(() => {
     if (!skywayKey) {

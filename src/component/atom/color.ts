@@ -4,6 +4,9 @@ export const colors = {
   subRed: '#E8D2D4',
   white: '#fff',
   black: '#000',
+  side: '#3d92a4',
+  item: '#2c3f55',
+  backItem: '#c0bbc0',
 };
 
 export const convertHexToRGBA = (hexCode: string, opacity: number) => {

@@ -1,12 +1,12 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './home';
-// import { RouterNav } from './router-nav';
 import styled from 'styled-components';
 import { LogHistory } from './log-history';
 import { useSelector } from 'react-redux';
 import { RootState } from '../slice/index';
 import { CreateUser } from './create-user';
+import { colors } from './atom/color';
 
 const MainContent = styled.div``;
 const SideContent = styled.div`
@@ -19,7 +19,7 @@ const SideBorder = styled.div`
   height: 100%;
   width: 0.3rem;
   margin: 0;
-  background-color: #3d92a4;
+  background-color: ${colors.side};
   cursor: col-resize;
 `;
 
@@ -52,7 +52,6 @@ export const App = () => {
     <Router>
       <Content>
         <MainContent>
-          {/* <RouterNav /> */}
           <AppRouterContent />
         </MainContent>
         <Side />

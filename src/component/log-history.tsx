@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { colors } from './atom/color';
 import { useSelector } from 'react-redux';
 import { RootState } from '../slice/index';
-// import { Button } from './atom/button';
+import { colors } from './atom/color';
 
 const LogItemNameStyle = styled.p`
   margin: 0;
@@ -15,7 +14,7 @@ const LogItemNameStyle = styled.p`
 const LogItemTextStyle = styled.p`
   margin: 0;
   font-size: 1.7rem;
-  color: #2c3f55;
+  color: ${colors.item};
 `;
 
 const LogItemDateStyle = styled.p`
@@ -29,7 +28,7 @@ const LogItemStyle = styled.div`
   & > div {
     padding: 0.5rem;
     border-radius: 1.5rem;
-    border: 0.2rem solid #3d92a4;
+    border: 0.2rem solid ${colors.side};
   }
 `;
 
@@ -52,7 +51,8 @@ const LogHistoryStyle = styled.div<{ hasLog: boolean }>`
   display: block;
   overflow-y: scroll;
   flex: 1;
-  background-color: ${({ hasLog }) => (hasLog ? colors.white : `#C0BBC0`)};
+  background-color: ${({ hasLog }) =>
+    hasLog ? colors.white : `${colors.backItem}`};
 `;
 
 const NoLog = () => (

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Size } from '../../types/common';
+import { colors } from './color';
 
 export const Text = styled.p<{ size?: Size }>`
   margin: 0;
@@ -14,5 +15,5 @@ export const Text = styled.p<{ size?: Size }>`
     }
   }};
   font-weight: bold;
-  color: #2c3f55;
+  color: ${colors.item};
 `;

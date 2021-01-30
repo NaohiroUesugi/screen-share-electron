@@ -1,5 +1,4 @@
 import { app, BrowserWindow, ipcMain, session, screen } from 'electron';
-// import path from 'path';
 
 const createWindow = (): void => {
   const win = new BrowserWindow({
@@ -8,7 +7,6 @@ const createWindow = (): void => {
     webPreferences: {
       nodeIntegration: true,
       nodeIntegrationInWorker: false,
-      // contextIsolation: true,
     },
   });
 
