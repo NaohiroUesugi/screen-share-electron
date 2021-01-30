@@ -59,13 +59,10 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      <TextName>{selfUser.name}</TextName>
-      <Button onClick={() => handleMedia(['screen'])} text="view screen" />
-      <Button
-        onClick={() => handleMedia(['window'])}
-        text="select application"
-      />
-      <Button onClick={viewScreen} text="View Screen" />
+      <TextName>登録名: {selfUser.name}</TextName>
+      <Button onClick={() => handleMedia(['screen'])} text="画面を共有" />
+      <Button onClick={() => handleMedia(['window'])} text="アプリを共有" />
+      <Button onClick={viewScreen} text="画面を見る" />
       <Modal
         isOpen={isModalOpen}
         onCancelClick={() => setIsModalOpen(false)}

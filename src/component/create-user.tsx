@@ -40,7 +40,7 @@ export const CreateUser: React.FC = () => {
           onCancelClick={() => void 0}
           body={
             <ModalBody>
-              <ModalText>Register the name</ModalText>
+              <ModalText>名前を登録</ModalText>
               <ModalInputTextWapper>
                 <InputText
                   value={name}
