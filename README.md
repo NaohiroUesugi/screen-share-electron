@@ -1,6 +1,6 @@
 # screen-share-electron
 
-### 環境構築
+### 環境
 
 ```
 node -v
@@ -8,8 +8,10 @@ node -v
 
 yarn
 
+// メインプロセスのbuild
 build:main
 
+// レンダラープロセスのbuild
 build:render:watch
 
 yarn start
