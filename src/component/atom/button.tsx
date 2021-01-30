@@ -44,11 +44,15 @@ type ButtonProps = {
 };
 
 export const Button: React.FC<ButtonProps> = ({
-  onClick,
+  onClick: onClickProps,
   text,
   size = 'medium',
   disabled,
 }) => {
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    onClickProps();
+  };
   return (
     <ButtonWapper onClick={onClick} size={size} disabled={disabled}>
       {text}
