@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain, session, screen } from 'electron';
 
 const createWindow = (): void => {
-  const win = new BrowserWindow({
+  let win = new BrowserWindow({
     width: 1200,
     height: 600,
     webPreferences: {
@@ -10,9 +10,18 @@ const createWindow = (): void => {
     },
   });
 
-  win.loadFile('./index.html');
+  const path = require('path');
+  win.loadFile(path.join(__dirname, './index.html'));
+  // win.loadFile('./index.html');
 
-  win.webContents.openDevTools();
+  // if --debug option open dev tool
+  if (process.argv.find((arg) => arg === '--debug')) {
+    win.webContents.openDevTools();
+  }
+
+  win.on('closed', () => {
+    win = null;
+  });
 };
 
 app.whenReady().then(createWindow);
