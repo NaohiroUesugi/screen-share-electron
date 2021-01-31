@@ -18,12 +18,14 @@ const IndexComponent: React.FC = () => {
   }, []);
   return (
     <>
-      {skywayKey && (
+      {skywayKey ? (
         <Provider store={createStore()}>
           <RoomState skywayKey={skywayKey}>
             <App />
           </RoomState>
         </Provider>
+      ) : (
+        <h1>...loding</h1>
       )}
     </>
   );
