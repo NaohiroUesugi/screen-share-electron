@@ -3,9 +3,9 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './home';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { RootState } from '../slice/index';
 import { CreateUser } from './create-user';
 import { Side } from './side';
+import { selectUser } from '../slice/user-slice';
 
 const MainContent = styled.div``;
 
@@ -25,7 +25,7 @@ const AppRouterContent = () => (
 );
 
 export const App = () => {
-  const { selfUser } = useSelector((state: RootState) => state.user);
+  const selfUser = useSelector(selectUser);
   if (selfUser === null) {
     return <CreateUser />;
   }

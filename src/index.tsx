@@ -25,7 +25,7 @@ const IndexComponent: React.FC = () => {
           </RoomState>
         </Provider>
       ) : (
-        <h1>...loding</h1>
+        <h1>...loding...</h1>
       )}
     </>
   );

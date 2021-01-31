@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
 export type User = { [id: string]: string };
 
 export type userSliceState = {
@@ -30,3 +30,9 @@ export const userSlice = createSlice({
 });
 
 export const userActions = userSlice.actions;
+
+const selectUserState = (state) => state.user;
+export const selectUser = createSelector(
+  [selectUserState],
+  (state) => state.selfUser
+);
