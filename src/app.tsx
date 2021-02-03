@@ -1,11 +1,11 @@
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import { Home } from './home';
+import { Home } from './pages/home';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { CreateUser } from './create-user';
-import { Side } from './side';
-import { selectUser } from '../slice/user-slice';
+import { CreateUser } from './component/create-user';
+import { Side } from './component/side';
+import { selectUser } from './slice/user-slice';
 
 const MainContent = styled.div``;
 

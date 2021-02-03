@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createStore from './createStore';
-import { App } from './component/app';
+import { App } from './app';
 import { RoomState } from './component/room-state';
 import axios from 'axios';
 const apiUrl = 'https://screen-share-api.herokuapp.com/api/v1/user';

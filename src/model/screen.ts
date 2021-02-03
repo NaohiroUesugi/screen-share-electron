@@ -47,6 +47,13 @@ export class Screen {
       .getVideoTracks()[0]
       .getSettings().height;
     canvas.style.display = 'block';
+
+    // edit-canvas
+    const editCanvas: HTMLCanvasElement =
+      document.querySelector('#edit-canvas') || null;
+    editCanvas.style.display = 'block';
+    editCanvas.style.height = `${canvas.clientHeight}px`;
+
     const _canvasUpdate = () => {
       const {
         width,

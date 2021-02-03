@@ -1,14 +1,14 @@
 import React, { useState, useRef, useContext } from 'react';
-import { ScreenImage } from './screen-image';
-import { Button } from './atom/button';
-import { Text } from './atom/text';
-import { Modal } from './atom/modal';
+import { ScreenImage } from '../component/screen-image';
+import { Button } from '../component/atom/button';
+import { Text } from '../component/atom/text';
+import { Modal } from '../component/atom/modal';
 import { Screen, ScreenType } from '../model/screen';
 import styled from 'styled-components';
 
 import { useSelector } from 'react-redux';
 import { RootState } from '../slice/index';
-import { RoomContext } from './room-state';
+import { RoomContext } from '../component/room-state';
 
 export const Home: React.FC = () => {
   const { selfUser } = useSelector((state: RootState) => state.user);
@@ -57,6 +57,15 @@ export const Home: React.FC = () => {
     viewStreamRoom(videoRef);
   };
 
+  const onCanvasClick = (e) => {
+    // TODO: able canvas drowing
+    // const rect = e.target.getBoundingClientRect();
+    // const x = e.clientX - rect.left;
+    // const y = e.clientY - rect.top;
+    // const canvas: HTMLCanvasElement =
+    //   document.querySelector('#edit-canvas') || null;
+  };
+
   return (
     <>
       <TextName>登録名: {selfUser.name}</TextName>
@@ -91,10 +100,15 @@ export const Home: React.FC = () => {
           </ModalFooter>
         }
       ></Modal>
-      <div>
+      <ViewStyle>
         <Video id="screen-video" ref={videoRef} />
+        <Canvas
+          id="edit-canvas"
+          onClick={onCanvasClick}
+          style={{ zIndex: 1 }}
+        />
         <Canvas id="video-canvas" />
-      </div>
+      </ViewStyle>
     </>
   );
 };
@@ -111,10 +125,17 @@ const ModalFooter = styled.div`
   height: 100%;
 `;
 
+const ViewStyle = styled.div`
+  position: relative;
+  height: 80rem;
+`;
+
 const Canvas = styled.canvas`
+  position: absolute;
+  top: 0;
+  left: 0;
   display: none;
   width: 100%;
-  height: 100%;
 `;
 
 const Video = styled.video`
